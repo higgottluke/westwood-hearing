@@ -27,7 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
-
+LOGIN_REDIRECT_URL = '/login/'
+LOGIN_URL = '/login/'
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,6 +50,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# session settings
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+SESSION_COOKIE_AGE = 300
 
 ROOT_URLCONF = 'mysite.urls'
 
