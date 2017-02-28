@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 from .models import Patient, Audiogram, Appointment
 from django.contrib.auth.decorators import login_required
