@@ -4,74 +4,22 @@
 
 {% block content %}
 <div class="col-md-10 col-md-offset-1">
-  <div class="wizard-container">
-    <div class="card wizard-card" id="wizardNewPatient" data-color="blue">
-      <form action="">
-        <div class="wizard-header">
-          <h3 class="wizard-title">New Patient</h3>
+  <div class="container">
+    <div class="card" data-color="blue">
+      <div class="card-header" data-background-color="blue"><h2>Add New Patient</h2>
+      </div>
+      <div class="card-content">
+      <form action="" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+          <label for="{{ field.subject_id_for_label }}">{{ field.label }}</label>
+          {{ field }}
         </div>
-        <div class="wizard-navigation">
-          <ul class="nav nav-pills">
-            <li style="width: 33.3333%;" class="active">
-              <a href="#basics" data-toggle="tab" aria-expanded="true">Basics</a>
-            </li>
-            <li style="width: 33.3333%;" class="">
-              <a href="#contact" data-toggle="tab" aria-expanded="false">Contact Info</a>
-            </li>
-            <li style="width: 33.3333%;" class="">
-              <a href="#confirm" data-toggle="tab" aria-expanded="false">Confirm</a>
-            </li>
-          </ul>
-          <div class="moving-tab" style="width: 187.556px; transform: translate3d(-8px, 0px, 0px); transition: all 0.5s cubic-bezier(0.29, 1.42, 0.79, 1) 0s;">About</div>
-        </div>
-        <div class="tab-content">
-          <div id="basics" class="tab-pane active">
-            <div class="row">
-              <h4 class="info-text">Let's start with basic information.</h4>
-              <div class="col-md-6">
-                <div class="input-group">
-                  <div class="form-group label-floating is-empty">
-                    <label class="control-label">First Name
-                      <small>(required)</small>
-                    </label>
-                    {{ form.fname }}
-                    <span class="material-input"></span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="input-group">
-                  <div class="form-group label-floating is-empty">
-                    <label class="control-label">Last Name
-                      <small>(required)</small>
-                    </label>
-                    {{ form.lname }}
-                    <span class="material-input"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 col-offset-2">
-                <div class="input-group">
-                  <div class="form-group label-floating is-empty">
-                    <label class="label-control">Birthday
-                      <small>(required)</small>
-                    </label>
-                    <input id="birthday" class="form-control datepicker" type="text" required>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="contact" class="tab-pane">
-
-          </div>
-          <div id="confirm" class="tab-pane">
-
-          </div>
-        </div>
+        {% endfor %}
+        <input type="submit">Submit!</input>
       </form>
+      </div>
     </div>
   </div>
 </div>

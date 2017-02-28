@@ -25,7 +25,7 @@ SECRET_KEY = 'f4#m8%^ai#7wfz#mw6%ml22f&4al$vx0yq2)iwwj^((_^vmzk&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'admin.westwoodhearing.com']
 
 LOGIN_REDIRECT_URL = '/login/'
 LOGIN_URL = '/login/'
@@ -53,7 +53,7 @@ MIDDLEWARE = [
 
 # session settings
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
-SESSION_COOKIE_AGE = 300
+SESSION_COOKIE_AGE = 30000
 
 ROOT_URLCONF = 'mysite.urls'
 

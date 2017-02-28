@@ -28,8 +28,12 @@ def patient_list(request):
 
 @login_required
 def newpatient(request):
-	form = NewPatientForm
-	return render(request, 'OMS/newpatient.html', {'form': form})
+	if request.method == 'POST':
+		# blah blah blah
+		pass
+	else:
+		form = NewPatientForm
+		return render(request, 'OMS/newpatient.html', {'form': form})
 
 @login_required
 def patient_profile(request, id):
