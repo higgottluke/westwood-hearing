@@ -18,8 +18,8 @@ APPOINTMENT_TYPE_CHOICES = (
 	)
 
 class Patient(models.Model):
-	fname = models.CharField('First Name', max_length=30, default=" ")
-	lname = models.CharField('Last Name', max_length=30, default=" ")
+	fname = models.CharField('First Name', max_length=30, blank=True)
+	lname = models.CharField('Last Name', max_length=30, blank=True)
 	gender = models.CharField('Gender', max_length=1, choices=GENDER_CHOICES, default='')
 	phone = models.CharField('Phone Number', max_length=10, blank=True)
 	email = models.EmailField('Email Address', blank=True)
@@ -60,17 +60,17 @@ class Appointment(models.Model):
 
 
 class Manufacturer(models.Model):
-	name = models.CharField('Company Name', max_length=30, default=" ")
-	phone = models.CharField('Phone Number', max_length=10, default=" ")
-	repname = models.CharField('Representative ', max_length=30, default=" ")
-	repphone = models.CharField('Phone Number', max_length=10, default=" ")
+	name = models.CharField('Company Name', max_length=30, blank=True)
+	phone = models.CharField('Phone Number', max_length=10, blank=True)
+	repname = models.CharField('Representative ', max_length=30, blank=True)
+	repphone = models.CharField('Phone Number', max_length=10, blank=True)
 
 	def __str__(self):
 		return self.name
 
 class Device(models.Model):
 	manufacturer = models.ForeignKey('Manufacturer', Manufacturer)
-	name = models.CharField('Name', max_length=40, default=" ")
+	name = models.CharField('Name', max_length=40, blank=True)
 	description = models.TextField('Description', max_length=200)
 
 	def __str__(self):

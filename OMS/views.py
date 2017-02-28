@@ -1,9 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from reportlab.pdfgen import canvas
 from django.http import HttpResponse
 from .models import Patient, Audiogram, Appointment
 from django.contrib.auth.decorators import login_required
-from .forms import NewPatientForm
+from .forms import PatientForm
 
 # Create your views here.
 @login_required
@@ -29,19 +29,25 @@ def patient_list(request):
 @login_required
 def newpatient(request):
 	if request.method == 'POST':
-		# blah blah blah
-		pass
+		form = PatientForm(request.POST)
+		if form.is_valid():
+			# do something to create a new Patient object
+			form.save()
+			return redirect('/patients')
+
 	else:
-		form = NewPatientForm
+		form = PatientForm
 		return render(request, 'OMS/newpatient.html', {'form': form})
 
 @login_required
 def patient_profile(request, id):
+	form = PatientForm
 	patient = get_object_or_404(Patient, id=id)
 	audiograms = Audiogram.objects.filter(patient__id=id).order_by('timestamp')
 	appointments = Appointment.objects.filter(patient__id=id).order_by('datetime')
 	return render(request, 'OMS/patient_details.html',
 		{'patient': patient,
 		'audiograms': audiograms,
-		'appointments': appointments,}
+		'appointments': appointments,
+		'patientform': form,}
 	)

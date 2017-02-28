@@ -8,15 +8,21 @@
 		</div>
 		<div class="card-content">
 			<form id="form-details">
-
+					{% csrf_token %}
 						<div class="row">
-							<div class="col-md-9">
+							<div class="col-md-5">
 								<div class="form-group label-floating">
 									<label class="control-label">Email address</label>
 									<input disabled="" class="form-control" type="email" value="{{ patient.email }}">
 									<span class="material-input"></span></div>
 								</div>
-								<div class="col-md-3">
+								<div class="col-md-5">
+									<div class="form-group label-floating">
+										<label class="control-label">Phone</label>
+										<input disabled="" class="form-control" type="text" value="{{ patient.phone }}" minlength="10" maxlength="10" number="true">
+									</div>
+								</div>
+								<div class="col-md-2">
 									<div class="form-group label-floating">
 										<label class="control-label">Birthday</label>
 										<input disabled="" class="form-control datepicker" type="date" value="{{ patient.birthday }}" />
@@ -25,34 +31,32 @@
 								</div>
 
 								<div class="row">
-									<div class="col-md-12">
+									<div class="col-md-3">
 										<div class="form-group label-floating">
 											<label class="control-label">Address</label>
-											<input disabled="" class="form-control" type="text">
+											<input disabled="" class="form-control" type="text" value="{{ patient.street }}">
 											<span class="material-input"></span></div>
 										</div>
-									</div>
-
-									<div class="row">
-										<div class="col-md-4">
+										<div class="col-md-3">
 											<div class="form-group label-floating">
 												<label class="control-label">City</label>
-												<input disabled="" class="form-control" type="text">
+												<input disabled="" class="form-control" type="text" value="{{ patient.city }}">
 												<span class="material-input"></span></div>
 											</div>
-											<div class="col-md-4">
+											<div class="col-md-3">
 												<div class="form-group label-floating">
-													<label class="control-label">Country</label>
-													<input disabled="" class="form-control" type="text">
+													<label class="control-label">State</label>
+													<input disabled="" minlength="2" maxlength="2" class="form-control" type="text" value="{{ patient.state }}">
 													<span class="material-input"></span></div>
 												</div>
-												<div class="col-md-4">
+												<div class="col-md-3">
 													<div class="form-group label-floating">
-														<label class="control-label">Postal Code</label>
-														<input disabled="" class="form-control" type="text">
+														<label class="control-label">Zip Code</label>
+														<input disabled="" class="form-control" type="text" value="{{ patient.zipcode }}" minlength="5" maxlength="5" number="true">
 														<span class="material-input"></span></div>
 													</div>
 												</div>
+
 												<div class="togglebutton pull-left">
 													<label>
 														<input type="checkbox" id="enable-edit">

@@ -1,8 +1,13 @@
+var formEnabled = false;
 $('#enable-edit').click(function() {
-  if ($("form input:first").is(':disabled')) {
+  if (formEnabled == false) {
     $('.form-control').prop('disabled', false);
+    formEnabled = true;
   }
-  else $('.form-control').prop('disabled', true);
+  else {
+    $('.form-control').prop('disabled', true);
+    formEnabled = false;
+  }
 
 });
 
