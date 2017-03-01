@@ -9,3 +9,8 @@
 .wrapper-full-page {
 	background-color: black;
 }
+
+textarea {
+	max-height: 200px;
+	overflow: hidden;
+}

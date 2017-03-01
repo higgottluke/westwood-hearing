@@ -33,20 +33,29 @@ def newpatient(request):
 			# do something to create a new Patient object
 			form.save()
 			return redirect('/patients')
-
 	else:
 		form = PatientForm
 		return render(request, 'OMS/newpatient.html', {'form': form})
 
 @login_required
 def patient_profile(request, id):
-	form = PatientForm
 	patient = get_object_or_404(Patient, id=id)
-	audiograms = Audiogram.objects.filter(patient__id=id).order_by('timestamp')
-	appointments = Appointment.objects.filter(patient__id=id).order_by('datetime')
-	return render(request, 'OMS/patient_details.html',
-		{'patient': patient,
-		'audiograms': audiograms,
-		'appointments': appointments,
-		'patientform': form,}
-	)
+	if request.method == 'POST':
+		form = PatientForm(request.POST, instance=patient)
+		if form.is_valid():
+			# do something to create a new Patient object
+			form.save()
+			return redirect('/patients')
+		else:
+			return redirect('/')
+	else:
+		form = PatientForm(instance=patient)
+		audiograms = Audiogram.objects.filter(patient__id=id).order_by('timestamp')
+		appointments = Appointment.objects.filter(patient__id=id).order_by('datetime')
+		return render(request, 'OMS/patient_details.html', {
+			'patient': patient,
+			'audiograms': audiograms,
+			'appointments': appointments,
+			'patientform': form,
+			}
+		)
