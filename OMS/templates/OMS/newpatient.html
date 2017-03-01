@@ -3,7 +3,15 @@
 {% block title %}Westwood Hearing | New Patient{% endblock %}
 
 {% block content %}
-<div class="col-md-10 col-md-offset-1">
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-danger">
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+<div class="row">
+<div class="col-md-8">
   <div class="container">
     <div class="card" data-color="blue">
       <div class="card-header" data-background-color="blue"><h2>Add New Patient</h2>
@@ -17,10 +25,11 @@
           {{ field }}
         </div>
         {% endfor %}
-        <input type="submit">Submit!</input>
+        <input type="submit" value="Add">
       </form>
       </div>
     </div>
   </div>
+</div>
 </div>
 {% endblock %}

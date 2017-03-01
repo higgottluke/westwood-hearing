@@ -27,7 +27,7 @@ class Patient(models.Model):
 	street = models.TextField('Street Address', blank=True)
 	city = models.TextField('City', blank=True)
 	state = models.CharField('State', max_length=2, blank=True)
-	zipcode = models.IntegerField('Zip Code', blank=True)
+	zipcode = models.IntegerField('Zip Code', blank=True, null=True)
 	notes = models.TextField('Notes', blank=True)
 	createdate = models.DateTimeField('Became a patient on', auto_now_add=True)
 	birthday = models.DateField('Birthday', blank=True)

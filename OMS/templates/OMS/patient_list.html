@@ -3,6 +3,14 @@
 {% block title %}Westwood Hearing | Patients{% endblock %}
 {% block content %}
 
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-danger">
+  {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -27,6 +35,7 @@
               </thead>
               <tbody>
                 {% for patient in patients %}
+                <tr>
                   <td>{{ patient.lname }}</td>
                   <td>{{ patient.fname }}</td>
                   <td>{{ patient.phone }}</td>

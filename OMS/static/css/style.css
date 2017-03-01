@@ -14,3 +14,9 @@ textarea {
 	max-height: 200px;
 	overflow: hidden;
 }
+.form-group label.control-label {
+	color: #5C5C5C;
+}
+.form-control {
+	color: black;
+}

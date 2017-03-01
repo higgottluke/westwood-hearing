@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Patient, Audiogram, Appointment
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .forms import PatientForm
 
 # Create your views here.
@@ -33,6 +34,9 @@ def newpatient(request):
 			# do something to create a new Patient object
 			form.save()
 			return redirect('/patients')
+		else:
+			messages.add_message(request, messages.ERROR, 'Unexpected Error')
+			return redirect('/patient/')
 	else:
 		form = PatientForm
 		return render(request, 'OMS/newpatient.html', {'form': form})

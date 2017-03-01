@@ -9,6 +9,81 @@
 			<div class="card-content">
 				<form id="form-details" method="POST">
 					{% csrf_token %}
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group label-floating">
+								<label for="{{ patientform.fname.id_for_label }}" class="control-label">{{ patientform.fname.label }}</label>
+								{{ patientform.fname }}
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group label-floating">
+								<label for="{{ patientform.lname.id_for_label }}" class="control-label">{{ patientform.lname.label }}</label>
+								{{ patientform.lname }}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group label-floating">
+								<label for="{{ patientform.street.id_for_label }}" class="control-label">{{ patientform.street.label }}</label>
+								{{ patientform.street }}
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group label-floating">
+								<label for="{{ patientform.city.id_for_label }}" class="control-label">{{ patientform.city.label }}</label>
+								{{ patientform.city }}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group label-floating">
+								<label for="{{ patientform.state.id_for_label }}" class="control-label">{{ patientform.state.label }}</label>
+								{{ patientform.state }}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group label-floating">
+								<label for="{{ patientform.zipcode.id_for_label }}" class="control-label">{{ patientform.zipcode.label }}</label>
+								{{ patientform.zipcode }}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<div class="form-group label-floating">
+								<label for="{{ patientform.birthday.id_for_label }}" class="control-label">{{ patientform.birthday.label }}</label>
+								{{ patientform.birthday }}
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="form-group label-floating">
+								<label for="{{ patientform.phone.id_for_label }}" class="control-label">{{ patientform.phone.label }}</label>
+								{{ patientform.phone }}
+							</div>
+						</div>
+						<div class="col-md-5">
+							<div class="form-group label-floating">
+								<label for="{{ patientform.email.id_for_label }}" class="control-label">{{ patientform.email.label }}</label>
+								{{ patientform.email }}
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group label-floating">
+								<label for="{{ patientform.gender.id_for_label }}" class="control-label">{{ patientform.gender.label }}</label>
+								{{ patientform.gender }}
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group label-floating">
+								<label for="{{ patientform.notes.id_for_label }}" class="control-label">{{ patientform.notes.label }}</label>
+								{{ patientform.notes }}
+							</div>
+						</div>
+					</div>
+					<!--
 					{% for field in patientform %}
 					<div class="row">
 						<div class="form-group label-floating">
@@ -17,6 +92,7 @@
 						</div>
 					</div>
 					{% endfor %}
+				-->
 					<div class="togglebutton pull-left">
 						<label>
 							<input type="checkbox" id="enable-edit">
@@ -31,7 +107,7 @@
 	</div>
 	<div class="col-md-4">
 		<div class="card">
-			<div class="card-header" data-background-color="green">
+			<div class="card-header" data-background-color="blue">
 				<h4>Appointment History</h4>
 			</div>
 			<div class="card-content">
@@ -53,6 +129,11 @@
 						</div>
 					</div>
 					{% endfor %}
+				</div>
+				<div class="row text-center">
+				<button class="btn btn-rose btn-sm btn-round">
+					<i class="material-icons">add</i> New Appointment
+				</button>
 				</div>
 			</div>
 		</div>
@@ -94,16 +175,20 @@
 										<th>8000</th>
 									</thead>
 									<tr class="audiogram-left">
-										<th>L</th>
+										<th class="text-center">L</th>
 										{% for item in audiogram.get_audio_L %}
 										<td>{{ item }}</td>
 										{% endfor %}
 									</tr>
 									<tr class="audiogram-right">
-										<th>R</th>
+										<th class="text-center">R</th>
 										{% for item in audiogram.get_audio_R %}
 										<td>{{ item }}</td>
 										{% endfor %}
+									</tr>
+										<th class="text-center">Notes</th>
+										<td colspan="9" class="text-left">{{ audiogram.notes }}</td>
+									<tr>
 									</tr>
 								</table>
 							</div>
@@ -111,6 +196,11 @@
 					</div>
 				</div>
 				{% endfor %}
+			</div>
+			<div class="row text-center">
+			<button class="btn btn-rose btn-sm btn-round">
+				<i class="material-icons">add</i> New Appointment
+			</button>
 			</div>
 		</div>
 	</div>
