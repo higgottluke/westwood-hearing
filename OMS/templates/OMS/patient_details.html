@@ -12,74 +12,63 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group label-floating">
-								<label for="{{ patientform.fname.id_for_label }}" class="control-label">{{ patientform.fname.label }}</label>
-								{{ patientform.fname }}
+								<label for="{{ patientform.fname.id_for_label }}" class="control-label">{{ patientform.fname.label }}</label> {{ patientform.fname }}
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group label-floating">
-								<label for="{{ patientform.lname.id_for_label }}" class="control-label">{{ patientform.lname.label }}</label>
-								{{ patientform.lname }}
+								<label for="{{ patientform.lname.id_for_label }}" class="control-label">{{ patientform.lname.label }}</label> {{ patientform.lname }}
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group label-floating">
-								<label for="{{ patientform.street.id_for_label }}" class="control-label">{{ patientform.street.label }}</label>
-								{{ patientform.street }}
+								<label for="{{ patientform.street.id_for_label }}" class="control-label">{{ patientform.street.label }}</label> {{ patientform.street }}
 							</div>
 						</div>
 						<div class="col-md-4">
 							<div class="form-group label-floating">
-								<label for="{{ patientform.city.id_for_label }}" class="control-label">{{ patientform.city.label }}</label>
-								{{ patientform.city }}
+								<label for="{{ patientform.city.id_for_label }}" class="control-label">{{ patientform.city.label }}</label> {{ patientform.city }}
 							</div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group label-floating">
-								<label for="{{ patientform.state.id_for_label }}" class="control-label">{{ patientform.state.label }}</label>
-								{{ patientform.state }}
+								<label for="{{ patientform.state.id_for_label }}" class="control-label">{{ patientform.state.label }}</label> {{ patientform.state }}
 							</div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group label-floating">
-								<label for="{{ patientform.zipcode.id_for_label }}" class="control-label">{{ patientform.zipcode.label }}</label>
-								{{ patientform.zipcode }}
+								<label for="{{ patientform.zipcode.id_for_label }}" class="control-label">{{ patientform.zipcode.label }}</label> {{ patientform.zipcode }}
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-2">
 							<div class="form-group label-floating">
-								<label for="{{ patientform.birthday.id_for_label }}" class="control-label">{{ patientform.birthday.label }}</label>
-								{{ patientform.birthday }}
+								<label for="{{ patientform.birthday.id_for_label }}" class="control-label">{{ patientform.birthday.label }}</label> {{ patientform.birthday }}
 							</div>
 						</div>
 						<div class="col-md-2">
 							<div class="form-group label-floating">
-								<label for="{{ patientform.phone.id_for_label }}" class="control-label">{{ patientform.phone.label }}</label>
-								{{ patientform.phone }}
+								<label for="{{ patientform.phone.id_for_label }}" class="control-label">{{ patientform.phone.label }}</label> {{ patientform.phone }}
 							</div>
 						</div>
 						<div class="col-md-5">
 							<div class="form-group label-floating">
-								<label for="{{ patientform.email.id_for_label }}" class="control-label">{{ patientform.email.label }}</label>
-								{{ patientform.email }}
+								<label for="{{ patientform.email.id_for_label }}" class="control-label">{{ patientform.email.label }}</label> {{ patientform.email }}
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="form-group label-floating">
-								<label for="{{ patientform.gender.id_for_label }}" class="control-label">{{ patientform.gender.label }}</label>
-								{{ patientform.gender }}
+								<label for="{{ patientform.gender.id_for_label }}" class="control-label">{{ patientform.gender.label }}</label> {{ patientform.gender }}
 							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group label-floating">
-								<label for="{{ patientform.notes.id_for_label }}" class="control-label">{{ patientform.notes.label }}</label>
-								{{ patientform.notes }}
+								<label for="{{ patientform.notes.id_for_label }}" class="control-label">{{ patientform.notes.label }}</label> {{ patientform.notes }}
 							</div>
 						</div>
 					</div>
@@ -131,7 +120,7 @@
 					{% endfor %}
 				</div>
 				<div class="row text-center">
-				<button class="btn btn-rose btn-sm btn-round">
+					<button class="btn btn-rose btn-sm btn-round">
 					<i class="material-icons">add</i> New Appointment
 				</button>
 				</div>
@@ -161,9 +150,8 @@
 					<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ forloop.counter }}" aria-expanded="false" style="height: 0px;">
 						<div class="panel-body text-center">
 							<div class="table-responsive">
-								<table class="table table-bordered">
-									<thead>
-										<th> </th>
+								<table class="table table-bordered audiogram">
+										<th><a href="/audiogram/{{ audiogram.id }}" class="">view details</a></th>
 										<th>250</th>
 										<th>500</th>
 										<th>1000</th>
@@ -186,8 +174,8 @@
 										<td>{{ item }}</td>
 										{% endfor %}
 									</tr>
-										<th class="text-center">Notes</th>
-										<td colspan="9" class="text-left">{{ audiogram.notes }}</td>
+									<th class="text-center">Notes</th>
+									<td colspan="9" class="text-left">{{ audiogram.notes }}</td>
 									<tr>
 									</tr>
 								</table>
@@ -198,19 +186,15 @@
 				{% endfor %}
 			</div>
 			<div class="row text-center">
-			<button class="btn btn-rose btn-sm btn-round">
+				<button class="btn btn-rose btn-sm btn-round">
 				<i class="material-icons">add</i> New Appointment
 			</button>
 			</div>
 		</div>
 	</div>
 </div>
-<div class="row audiogram-section">
 
-</div>
-
-{% endblock %}
-{% block scripts %}
+{% endblock %} {% block scripts %}
 
 <script>
 	$(document).ready(function() {

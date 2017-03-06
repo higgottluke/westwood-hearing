@@ -20,3 +20,6 @@ textarea {
 .form-control {
 	color: black;
 }
+.audiogram th {
+	text-align: center;
+}

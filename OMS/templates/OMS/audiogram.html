@@ -1,0 +1,77 @@
+{% extends 'OMS/base.html' %}
+{% block title %} {{ audiogram.patient.lname }}, {{ audiogram.patient.fname }} {% endblock %}
+{% load staticfiles %}
+{% block content %}
+<div class="row">
+	<div class="col-md-12">
+		<div class="card">
+      <div class="card-header" data-background-color="blue">
+        <h3>Audiogram on {{ audiogram.timestamp }}</h3>
+        <h6>{{ audiogram.patient.lname }}, {{ audiogram.patient.fname}}</h6>
+      </div>
+      <div class="card-content">
+      <div class="ct-chart ct-minor-seventh">
+
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered audiogram">
+            <th>250</th>
+            <th>500</th>
+            <th>1000</th>
+            <th>1500</th>
+            <th>2000</th>
+            <th>3000</th>
+            <th>4000</th>
+            <th>6000</th>
+            <th>8000</th>
+          </thead>
+          <tr class="audiogram-left">
+            {% for item in audiogram.get_audio_L %}
+            <td>{{ item }}</td>
+            {% endfor %}
+          </tr>
+          <tr class="audiogram-right">
+            {% for item in audiogram.get_audio_R %}
+            <td>{{ item }}</td>
+            {% endfor %}
+          </tr>
+        </table>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+var data = {
+  labels: ['250', '500', '1000', '1500', '2000', '3000', '4000', '6000', '8000'],
+  series:  [
+      [
+        {% for value in audiogram.get_audio_L %}{{ value }} , {% endfor %}
+      ],
+    [
+      {% for value in audiogram.get_audio_R %}{{ value }} , {% endfor %}
+    ]
+  ]
+};
+var options = {
+  lineSmooth: false,
+  low: 0,
+  high: 110,
+  fullWidth: true,
+  axisY: {
+    type: Chartist.FixedScaleAxis,
+      ticks: [-10, 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 105, 110],
+  }
+};
+var revdata = Chartist.reverseData(data);
+var chart = new Chartist.Line('#chart', data, options).on('data', function(context) {
+  context.data.series = context.data.series.map(function(series) {
+    return series.map(function(value) {
+      return -value;
+    });
+  });
+});
+</script>
+{% endblock %}

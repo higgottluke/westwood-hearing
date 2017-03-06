@@ -14,7 +14,7 @@ class PatientForm(forms.ModelForm):
             'fname' : TextInput(attrs=standardreq),
             'lname' : TextInput(attrs=standardreq),
             'gender': Select(attrs=standardreq),
-            'birthday': TextInput(attrs=standardreq),
+            'birthday': DateInput(attrs={'class':'form-control', 'required':"", 'autocomplete':"off"}),
             'email': EmailInput(attrs=standard),
             'street': TextInput(attrs=standard),
             'phone': TextInput(attrs={'class': 'form-control', 'number':'true', 'minlength':'10', 'maxlength':'10'}),

@@ -9,5 +9,6 @@ urlpatterns = [
 	url(r'^patients/$', views.patient_list, name='patient-list'),
 	url(r'^patient/(?P<id>\d+)/$', views.patient_profile, name='patient-info'),
 	url(r'^patient/new/$', views.newpatient, name='new-patient'),
-	url(r'^calendar/$', views.calendar, name='appointment-calendar')
+	url(r'^calendar/$', views.calendar, name='appointment-calendar'),
+	url(r'^audiogram/(?P<id>\d+)/$', views.audiogram, name='audiogram'),
 ]

@@ -63,3 +63,9 @@ def patient_profile(request, id):
 			'patientform': form,
 			}
 		)
+@login_required
+def audiogram(request, id):
+	audiogram = get_object_or_404(Audiogram, id=id)
+	return render(request, 'OMS/audiogram.html', {
+		'audiogram': audiogram,
+	})
