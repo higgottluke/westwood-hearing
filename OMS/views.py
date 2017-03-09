@@ -65,7 +65,14 @@ def patient_profile(request, id):
 		)
 @login_required
 def audiogram(request, id):
-	audiogram = get_object_or_404(Audiogram, id=id)
-	return render(request, 'OMS/audiogram.html', {
-		'audiogram': audiogram,
-	})
+	try:
+		audiogram = Audiogram.objects.get(id=id)
+		return render(request, 'OMS/audiogram.html', {
+			'audiogram': audiogram,
+			'patient': audiogram.patient,
+			})
+	except Audiogram.DoesNotExist:
+		patient = Patient.objects.get(id=id)
+		return render(request, 'OMS/audiogram.html', {
+			'patient': patient,
+		})

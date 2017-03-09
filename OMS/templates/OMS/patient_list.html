@@ -27,9 +27,9 @@
                 <tr role="row">
                   <th>Last Name</th>
                   <th>First Name</th>
-                  <th>Phone</th>
-                  <th>Email Address</th>
-                  <th>Birthday</th>
+                  <th class="hidden-xs hidden-sm">Phone</th>
+                  <th class="hidden-xs hidden-sm">Email Address</th>
+                  <th class="hidden-xs hidden-sm">Birthday</th>
                   <th class="text-right">Actions</th>
                 </tr>
               </thead>
@@ -38,10 +38,13 @@
                 <tr>
                   <td>{{ patient.lname }}</td>
                   <td>{{ patient.fname }}</td>
-                  <td>{{ patient.phone }}</td>
-                  <td>{{ patient.email }}</td>
-                  <td>{{ patient.birthday }}</td>
-                  <td class="text-right"><a href="/patient/{{ patient.id }}" class="btn btn-simple btn-info btn-icon edit">EDIT <i class="material-icons">dvr</i></a></td>
+                  <td class="hidden-xs hidden-sm">{{ patient.phone }}</td>
+                  <td class="hidden-xs hidden-sm">{{ patient.email }}</td>
+                  <td class="hidden-xs hidden-sm">{{ patient.birthday }}</td>
+                  <td class="text-right">
+                    <a href="/patient/{{ patient.id }}" class="btn btn-simple btn-info btn-icon edit">DETAILS <i class="material-icons">dvr</i></a>
+                    <a href="/audiogram/new/{{ patient.id }}" class="btn btn-simple btn-success btn-icon edit">NEW AUDIO <i class="material-icons">music_video</i></a>
+                  </td>
                 </tr>
                 {% endfor %}
               </tbody>

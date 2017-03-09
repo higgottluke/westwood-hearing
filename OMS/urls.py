@@ -11,4 +11,5 @@ urlpatterns = [
 	url(r'^patient/new/$', views.newpatient, name='new-patient'),
 	url(r'^calendar/$', views.calendar, name='appointment-calendar'),
 	url(r'^audiogram/(?P<id>\d+)/$', views.audiogram, name='audiogram'),
+	url(r'^audiogram/new/(?P<id>\d+)/$', views.audiogram, name='audiogram'),
 ]

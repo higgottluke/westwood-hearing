@@ -1,13 +1,14 @@
 from django import forms
 from django.forms import ModelForm, Textarea, TextInput, Select, EmailInput, DateInput
-from .models import Patient
+from .models import Patient, Audiogram
 from django.http import HttpRequest
+
+standardreq = {'class':'form-control', 'required':"", 'autocomplete':"off"}
+standard = {'class':'form-control', 'autocomplete':"off"}
 
 class PatientForm(forms.ModelForm):
     class Meta:
 
-        standardreq = {'class':'form-control', 'required':"", 'autocomplete':"off"}
-        standard = {'class':'form-control', 'autocomplete':"off"}
         model = Patient
         fields = ['fname', 'lname', 'gender', 'birthday', 'phone', 'email', 'street', 'city', 'state', 'zipcode', 'notes', ]
         widgets = {
@@ -24,3 +25,11 @@ class PatientForm(forms.ModelForm):
             'notes': Textarea(attrs={'class': 'form-control autoExpand', 'rows':'2', 'data-min-rows':'2'}),
         }
     label_suffix = ''
+
+class AudiogramForm(forms.ModelForm):
+    class Meta:
+        model = Audiogram
+        fields = '__all__'
+        widgets = {
+            '__all__': TextInput(standardreq),
+        }
