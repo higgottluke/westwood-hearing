@@ -8,7 +8,8 @@ from .forms import PatientForm
 # Create your views here.
 @login_required
 def home(request):
-	return render(request, 'OMS/home.html', {})
+	patients = Patient.objects.all().order_by('lname')
+	return render(request, 'OMS/home.html', {'patients': patients})
 
 def login(request):
 	return render(request, 'OMS/login.html')
@@ -49,7 +50,7 @@ def patient_profile(request, id):
 		if form.is_valid():
 			# do something to create a new Patient object
 			form.save()
-			return redirect('/patients')
+			return redirect('/patient/{}/'.format(form.fields['id']))
 		else:
 			return redirect('/')
 	else:
@@ -65,14 +66,8 @@ def patient_profile(request, id):
 		)
 @login_required
 def audiogram(request, id):
-	try:
-		audiogram = Audiogram.objects.get(id=id)
-		return render(request, 'OMS/audiogram.html', {
-			'audiogram': audiogram,
-			'patient': audiogram.patient,
-			})
-	except Audiogram.DoesNotExist:
-		patient = Patient.objects.get(id=id)
-		return render(request, 'OMS/audiogram.html', {
-			'patient': patient,
+	audiogram = Audiogram.objects.get(id=id)
+	return render(request, 'OMS/audiogram.html', {
+		'audiogram': audiogram,
+		'patient': audiogram.patient,
 		})
