@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<head>
+  <title>Westwood Hearing Instructions</title>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+  <meta name="viewport" content="width=device-width" />
+
+  <!-- Bootstrap core CSS     -->
+  <link href="{% static 'css/bootstrap-gaia.css' %}" rel="stylesheet" />
+
+  <!--  Material Dashboard CSS    -->
+
+  <link href="{% static 'css/gaia.css' %}" rel="stylesheet" />
+
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Cambo|Lato:400,700" rel="stylesheet" type="text/css">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+  <div class="section section-presentation-page">
+    <div class="parallax filter filter-color-blue">
+      <div class="image" style="background-image: url('{% static 'img/LA.jpg' %}')"></div>
+      <div class="container">
+        <div class="content">
+          <h1 class="title-modern">Westwood Hearing Instruments</h1>
+          <div class="separator">&#9734;
+          </div>
+          <h3>Providing hearing healthcare services to West Los Angeles for 30 years</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="about">
+    <div class="text-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="title-area">
+              <h5 class="subtitle text-gray">Established in 1987 on Westwood Blvd</h5>
+              <h2>About Us</h2>
+              <div class="separator separator-info">&#9734;</div>
+            </div>
+          </div>
+          <div class="col-sm-7 col-sm-offset-1">
+            <div class="description">
+              <p class="lead description"><strong>Westwood Hearing Instruments</strong> is a family-owned hearing healthcare clinic that's been helping West LA hear better for almost 35 years.</p>
+              <p class="description">Owned and operated by Della Wolfson, our resident Hearing Instruments Specialist, Westwood Hearing has proudly been a family-run business since its birth in 1987.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section" id="services">
+    <div class="text-area">
+      <div class="container">
+        <div class="row">
+          <div class="title-area">
+            <h2>Services We Offer</h2>
+            <div class="separator separator-warning">&#9734;</div>
+            <p class="description">Our friendly team specializes in providing service to our patients who already use assistive hearing devices, and need help with adjustments, cleaning, or repairs. We're also more than happy to help new patients with hearing exams and consultations, and we offer products from the world's leading assitive hearing device manufacturers.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <div class="info-icon">
+              <div class="icon text-info"><i class="fa fa-stethoscope" aria-hidden="true"></i></div>
+              <h3>Exams and Consultation</h3>
+              <p class="description">Find out if you or a family member could benefit from an assitive listening device by coming in for a free* consultation and hearing exam.</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="info-icon">
+              <div class="icon text-info"><i class="fa fa-wrench" aria-hidden="true"></i></div>
+              <h3>Repairs</h3>
+              <p class="description">Sometimes, things break. We'll happily do our best to fix your device at our office; and if we can't, we'll send it to our friends who can and get it back to you as quickly as possible.</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="info-icon">
+              <div class="icon text-info"><i class="fa fa-support" aria-hidden="true"></i></div>
+              <h3>Check-up and Cleaning</h3>
+              <p class="description">Hearing Aids are expensive devices. Get the longest life out of yours by coming in often for check-ups and cleaning by our trained, professional staff.</p>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="info-icon">
+              <div class="icon text-info"><i class="fa fa-deafness" aria-hidden="true"></i></div>
+              <h3>Refitting</h3>
+              <p class="description">We want to make sure our patients are happy with their devices, and we're happy to adjust, reprogram, or refit them as often as we need to.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section section-contact-form">
+    <div class="container">
+      <div class="title-area">
+        <h5 class="subtitle text-gray">We'd Love to Chat</h5>
+        <h2>Contact Our Office</h2>
+        <div class="separator separator-success">&#9734;</div>
+        <div class="row text-center">
+          <div class="col-xs-6">
+            <h3>Call Us</h3>
+            <p>at <strong>(310) 475-5023</strong></p>
+          </div>
+          <div class="col-xs-6">
+            <h3>Our Address is</h3>
+            <p>2353 Westwood Blvd, Los Angeles, CA 90064</p>
+          </div>
+        </div>
+      </div>
+      <p class="description text-center">We're working on making our Contact Us form work. For now, you can <strong>send us an email at <a href="mailto:info@westwoodhearing.com">info@westwoodhearing.com</a>.</strong></p>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="contact-form">
+            <form action="" method="POST">
+              {% csrf_token %}
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Your Full Name</label>
+                  <input disabled name="name" value="" class="form-control form-control-plain" type="text" required>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Your Email Address</label>
+                  <input disabled name="email" placeholder="someone@somewhere.com" value="" class="form-control form-control-plain" type="email" required>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>Subject</label>
+                  <input disabled name="email" value="" placeholder="Hi, Westwood Hearing!" class="form-control form-control-plain" type="text">
+                </div>
+              </div>
+              <div class="col-md-12">
+                <label>Type your message here: </label>
+                <textarea disabled name="content" class="form-control form-control-plain" placeholder="What do you want to say?" rows="5" required></textarea>
+                <div class="col-md-2 col-md-offset-5">
+                  <button class="btn btn-fill btn-info btn-lg">Send Message!</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer footer-color-black">
+    <div class="container">
+      <div class="pull-left">
+        <div class="copyright">
+        &copy; 2017 Westwood Hearing Instruments, made with love by Luke Higgott
+        </div>
+      </div>
+      <div class="social-area pull-right">
+        <a href="#" id="lowvision" class="btn btn-white" data-toggle="tooltip" data-placement="top" title="For Low Visibility Users, click this button to enlarge text and enable high contrast mode. To disable, reload the page.">Low Visibility and High Contrast Mode</a>
+      </div>
+    </div>
+  </footer>
+</body>
+<script src="{% static 'js/jquery-gaia.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-gaia.js' %}"></script>
+<script src="{% static 'js/modernizr.js' %}"></script>
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/gaia.js' %}"></script>
+<script>
+  $('[data-toggle="tooltip"]').tooltip();
+  // Low Visibility Button
+  $('#lowvision').on('click', function(event) {
+    event.preventDefault();
+    var svcs = $('.col-md-3');
+    var texts = $('.description');
+    var contacts = $('.col-xs-6');
+    var headers = $('h3');
+    texts.addClass('text-black')
+    texts.addClass('accessible-large')
+    svcs.removeClass('col-md-3');
+    contacts.addClass('panel-contrast')
+    headers.addClass('accessible-large')
+  })
+</script>

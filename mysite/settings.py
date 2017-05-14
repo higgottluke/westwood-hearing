@@ -25,7 +25,7 @@ SECRET_KEY = 'f4#m8%^ai#7wfz#mw6%ml22f&4al$vx0yq2)iwwj^((_^vmzk&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'admin.westwoodhearing.com']
+ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com', 'www.westwoodhearing.com']
 
 LOGIN_REDIRECT_URL = '/login/'
 LOGIN_URL = '/login/'

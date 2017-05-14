@@ -1,13 +1,60 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
-from .models import Patient, Audiogram, Appointment
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import PatientForm
+
+from .forms import PatientForm, ContactForm
+from .models import Patient, Audiogram, Appointment
+
+def home(request):
+	form_class = ContactForm
+	if request.method == 'POST':
+		form = form_class(data=request.POST)
+		if form.is_valid():
+			contact_name = request.POST.get('contact_name', '')
+			contact_email = request.POST.get('contact_email', '')
+			form_subject = request.POST.get('subject', '')
+			form_content = request.POST.get('content', '')
+
+			template = get_template('OMS/contact_template.html')
+			context = Context({
+				'contact_name': contact_name,
+				'contact_email': contact_email,
+				'form_content': form_content,
+				})
+			content = template.render(context)
+
+			email_to_office = EmailMessage(
+				"New Contact Form Submission",
+				content,
+				'info@westwoodhearing.com',
+				['info@westwoodhearing.com',],
+				reply_to=[contact_email]
+				)
+			email_to_office.content_subtype = "html"
+			email_to_office.send()
+			email_to_them = EmailMessage(
+				"Thanks for the message!",
+				"<p>This is what you sent us:</p>" + content + "<p>Our team will answer as soon as we can.</p>",
+				'info@westwoodhearing.com',
+				[contact_email],
+				reply_to=['info@westwoodhearing.com']
+				)
+			email_to_them.content_subtype = "html"
+			email_to_them.send()
+
+			messages.add_message(request, messages.SUCCESS, "Your message was sent successfully! Our team will answer as soon as they can. You should receive a copy of your message at your email address soon.")
+			return redirect('/')
+		else:
+			messages.add_message(request, messages.WARNING, "Something went wrong. Try filling the form out again, or send us an email directly at info@westwoodhearing.com")
+			return redirect('/')
+
+	return render(request, 'OMS/external.html')
+
 
 # Create your views here.
 @login_required
-def home(request):
+def patients(request):
 	patients = Patient.objects.all().order_by('lname')
 	return render(request, 'OMS/home.html', {'patients': patients})
 
